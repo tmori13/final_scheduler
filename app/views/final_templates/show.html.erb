@@ -1,0 +1,112 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Final #<%= @final.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/finals" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/finals/<%= @final.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit final
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_final/<%= @final.id %>" class="btn btn-block btn-outline-secondary">
+          Delete final
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Course identifier
+      </dt>
+      <dd>
+        <%= @final.course_identifier %>
+      </dd>
+
+      <dt>
+        Section
+      </dt>
+      <dd>
+        <%= @final.section %>
+      </dd>
+
+      <dt>
+        Course name
+      </dt>
+      <dd>
+        <%= @final.course_name %>
+      </dd>
+
+      <dt>
+        Instructor
+      </dt>
+      <dd>
+        <%= @final.instructor %>
+      </dd>
+
+      <dt>
+        Start time
+      </dt>
+      <dd>
+        <%= @final.start_time %>
+      </dd>
+
+      <dt>
+        End time
+      </dt>
+      <dd>
+        <%= @final.end_time %>
+      </dd>
+
+      <dt>
+        Day
+      </dt>
+      <dd>
+        <%= @final.day %>
+      </dd>
+
+      <dt>
+        Date
+      </dt>
+      <dd>
+        <%= @final.date %>
+      </dd>
+
+      <dt>
+        Room
+      </dt>
+      <dd>
+        <%= @final.room %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@final.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@final.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <%= render partial: "final_templates/final_enrollments" %>
+  </div>
+</div>

@@ -1,0 +1,145 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All finals
+    </h1>
+
+    <a href="/finals/new" class="btn btn-block btn-outline-secondary">
+      Add a new final
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-3">
+    <%= render partial: "final_templates/finals_search_form" %>
+  </div>
+</div>
+
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Course identifier
+        </th>
+
+        <th>
+          Section
+        </th>
+
+        <th>
+          Course name
+        </th>
+
+        <th>
+          Instructor
+        </th>
+
+        <th>
+          Start time
+        </th>
+
+        <th>
+          End time
+        </th>
+
+        <th>
+          Day
+        </th>
+
+        <th>
+          Date
+        </th>
+
+        <th>
+          Room
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @finals.each do |final| %>
+      <tr>
+        <td>
+          <%= final.id %>
+        </td>
+
+        <td>
+          <%= final.course_identifier %>
+        </td>
+
+        <td>
+          <%= final.section %>
+        </td>
+
+        <td>
+          <%= final.course_name %>
+        </td>
+
+        <td>
+          <%= final.instructor %>
+        </td>
+
+        <td>
+          <%= final.start_time %>
+        </td>
+
+        <td>
+          <%= final.end_time %>
+        </td>
+
+        <td>
+          <%= final.day %>
+        </td>
+
+        <td>
+          <%= final.date %>
+        </td>
+
+        <td>
+          <%= final.room %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(final.created_at) %> ago
+        </td>
+
+        <td>
+          <%= time_ago_in_words(final.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/finals/<%= final.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <%= paginate @finals, theme: "twitter-bootstrap-4" %>
+      </div>
+    </div>
+
+  </div>
+</div>

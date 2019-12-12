@@ -1,5 +1,5 @@
-namespace(:dev) do
-  desc "Hydrate the database with some dummy data to look at so that developing is easier"
-  task({ :prime => :environment}) do
+namespace :dev do
+  desc "Pre-populate database with dummy data"
+  task prime: :environment do
   end
 end
