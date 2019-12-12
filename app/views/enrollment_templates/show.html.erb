@@ -1,0 +1,70 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Enrollment #<%= @enrollment.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/enrollments" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <% if current_user == @enrollment.user %>
+          <a href="/enrollments/<%= @enrollment.id %>/edit" class="btn btn-block btn-sm btn-outline-secondary">
+            Edit enrollment
+          </a>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <% if current_user == @enrollment.user %>
+          <a href="/delete_enrollment/<%= @enrollment.id %>" class="btn btn-block btn-sm btn-outline-secondary">
+            Delete enrollment
+          </a>
+        <% end %>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <% if @enrollment.user.present? %>
+          <a href="/users/<%= @enrollment.user_id %>">
+            <%= @enrollment.user.email %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>
+        Final
+      </dt>
+      <dd>
+        <% if @enrollment.final.present? %>
+          <a href="/finals/<%= @enrollment.final_id %>">
+            <%= @enrollment.final.course_identifier %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@enrollment.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@enrollment.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

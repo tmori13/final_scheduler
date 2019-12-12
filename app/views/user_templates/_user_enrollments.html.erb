@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Enrollments
+
+    <a data-toggle="collapse" href="#user_enrollments_new_form">
+      Add enrollment
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @user.enrollments.each do |enrollment| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <a href="/enrollments/<%= enrollment.id %>">
+          <%= enrollment.user_id %>
+        </a>
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>

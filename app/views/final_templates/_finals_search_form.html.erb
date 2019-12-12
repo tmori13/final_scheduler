@@ -1,0 +1,100 @@
+<%= search_form_for @q, :class => collapse_search_form, :id => "finals_filters" do |f| %>
+  <p class="lead">Narrow results:</p>
+
+  <div class="form-group">
+    <%= f.label :course_identifier_cont, "Course identifier contains" %>
+    <%= f.text_field :course_identifier_cont, :class => "form-control", :placeholder => "Course identifier contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :room_cont, "Room contains" %>
+    <%= f.text_field :room_cont, :class => "form-control", :placeholder => "Room contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :date_cont, "Date contains" %>
+    <%= f.text_field :date_cont, :class => "form-control", :placeholder => "Date contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :day_cont, "Day contains" %>
+    <%= f.text_field :day_cont, :class => "form-control", :placeholder => "Day contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :end_time_cont, "End time contains" %>
+    <%= f.text_field :end_time_cont, :class => "form-control", :placeholder => "End time contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :start_time_cont, "Start time contains" %>
+    <%= f.text_field :start_time_cont, :class => "form-control", :placeholder => "Start time contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :instructor_cont, "Instructor contains" %>
+    <%= f.text_field :instructor_cont, :class => "form-control", :placeholder => "Instructor contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :course_name_cont, "Course name contains" %>
+    <%= f.text_field :course_name_cont, :class => "form-control", :placeholder => "Course name contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :section_cont, "Section contains" %>
+    <%= f.text_field :section_cont, :class => "form-control", :placeholder => "Section contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :created_at, "Created at" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <div class='input-group date' id='created_atgteqPicker' data-target-input="nearest">
+          <%= f.text_field :created_at_gteq, :class => "form-control datetimepicker-input", :placeholder => "Created at greater than or equal to", :data => {:target => '#created_atgteqPicker'} %>
+          <div class="input-group-append" data-target='#created_atgteqPicker' data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-md-6'>
+        <div class='input-group date' id='created_atlteqPicker' data-target-input="nearest">
+          <%= f.text_field :created_at_lteq, :class => "form-control datetimepicker-input", :placeholder => "Created at less than or equal to", :data => {:target => '#created_atlteqPicker'} %>
+          <div class="input-group-append" data-target='#created_atlteqPicker' data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+      $(function () {
+          $('#created_atgteqPicker').datetimepicker({
+              format: 'YYYY-MM-DD hh:mm:SS'
+          });
+          $('#created_atlteqPicker').datetimepicker({
+              useCurrent: false,
+              format: 'YYYY-MM-DD hh:mm:SS'
+          });
+          $('#created_atgteqPicker').on("dp.change", function (e) {
+              $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
+          });
+          $('#created_atlteqPicker').on("dp.change", function (e) {
+              $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
+          });
+      });
+  </script>
+
+
+
+
+  <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
+
+  <a href="/finals" class="btn btn-outline-secondary btn-block mb-1">Clear filters</a>
+
+<% end %>
+
+<a class="btn btn-outline-secondary btn-block mb-1" data-toggle="collapse" href="#finals_filters">
+  Show filters
+</a>

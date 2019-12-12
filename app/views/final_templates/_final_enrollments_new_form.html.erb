@@ -1,0 +1,10 @@
+<form action="/create_enrollment_from_final" method="post">
+
+  <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+  <input type="hidden" name="final_id" value="<%= @final.id %>">
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create enrollment
+  </button>
+</form>

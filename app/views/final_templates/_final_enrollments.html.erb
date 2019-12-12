@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Enrollments
+
+    <a data-toggle="collapse" href="#final_enrollments_new_form">
+      Add enrollment
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @final.enrollments.each do |enrollment| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <a href="/enrollments/<%= enrollment.id %>">
+          <%= enrollment.user_id %>
+        </a>
+
+        <%if current_user == enrollment.user %>
+          <a href="/delete_enrollment_from_final/<%= enrollment.id %>">
+            Delete
+          </a>
+        <% end %>
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="final_enrollments_new_form">
+        <%= render partial: "final_templates/final_enrollments_new_form" %>
+      </div>
+    </div>
+
+  </ul>
+</div>
